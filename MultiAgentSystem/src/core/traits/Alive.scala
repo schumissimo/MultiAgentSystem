@@ -12,10 +12,6 @@ trait Alive {
 	val TIME_TO_REPRODUCE: Int
 	var reproduction = TIME_TO_REPRODUCE
 
-	def moveTo(agent: Agent, coordonnees: Coordonnees, environnement: Environnement) {
-		environnement.move(agent, coordonnees)
-	}
-
 	def die(agent: Agent, environnement: Environnement) {
 		environnement.removeAgent(agent)
 	}

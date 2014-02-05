@@ -1,15 +1,15 @@
 package wator
 
 import java.awt.Color
-
 import core.Agent
 import core.Coordonnees
 import core.Environnement
 import core.traits.Alive
 import core.traits.Predator
+import core.traits.Movable
 
 class Shark(coord: Coordonnees, val environnement: Environnement, color: Color, eat_ : Int, gestation_ : Int, age_ : Int)
-	extends Agent(coord, environnement, color) with Alive with Predator {
+	extends Agent(coord, environnement, color) with Alive with Predator with Movable {
 
 	override val TIME_TO_EAT = eat_
 	timeToEat = TIME_TO_EAT

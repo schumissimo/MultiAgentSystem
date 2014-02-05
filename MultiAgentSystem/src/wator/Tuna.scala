@@ -5,9 +5,10 @@ import core.traits.Alive
 import core.Coordonnees
 import core.Agent
 import java.awt.Color
+import core.traits.Movable
 
 class Tuna(coord: Coordonnees, val environnement: Environnement, color: Color, gestation_ : Int, age_ : Int)
-	extends Agent(coord, environnement, color) with Alive {
+	extends Agent(coord, environnement, color) with Alive with Movable {
 
 	override val TIME_TO_REPRODUCE = gestation_
 	reproduction = TIME_TO_REPRODUCE

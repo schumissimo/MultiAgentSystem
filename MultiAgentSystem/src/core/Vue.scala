@@ -1,15 +1,19 @@
 package core
 
-import scala.swing._
-import javax.swing._
 import java.awt.Color
-import javax.swing.border.BevelBorder
-import wator.Tuna
+
+import scala.swing.BorderPanel
+import scala.swing.Dimension
+import scala.swing.Frame
+import scala.swing.GridPanel
+import scala.swing.Label
+import scala.swing.ScrollPane
+import scala.swing.Swing
 
 class Vue(environnement: Environnement, showBorders: Boolean) extends Frame {
 	val envSize = environnement.taille
 	val viewSize = 500
-	val cellSize = 20
+	val cellSize = 10
 	val gridPanel: GridPanel = new GridPanel(envSize, envSize)
 	val labels = Array.ofDim[Label](envSize, envSize)
 
@@ -21,6 +25,8 @@ class Vue(environnement: Environnement, showBorders: Boolean) extends Frame {
 					border = Swing.LineBorder(new Color(0, 0, 0))
 				}
 				preferredSize = new Dimension(cellSize, cellSize)
+				maximumSize = new Dimension(cellSize, cellSize)
+				minimumSize = new Dimension(cellSize, cellSize)
 				background = Color.WHITE
 				opaque = true
 			}
@@ -31,12 +37,13 @@ class Vue(environnement: Environnement, showBorders: Boolean) extends Frame {
 	val borderPanel = new BorderPanel
 	val scrollPanel = new ScrollPane(gridPanel)
 	scrollPanel.preferredSize = new Dimension(viewSize, viewSize)
-	val eastPanel = new Button("east")
+	scrollPanel.maximumSize = new Dimension(viewSize, viewSize)
+	scrollPanel.minimumSize = new Dimension(viewSize, viewSize)
 	title = "hey salut les copains"
 	contents = borderPanel
 
 	borderPanel.layout(scrollPanel) = BorderPanel.Position.Center
-	borderPanel.layout(eastPanel) = BorderPanel.Position.East
+	//borderPanel.layout(eastPanel) = BorderPanel.Position.East
 	peer.setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE)
 	pack
 

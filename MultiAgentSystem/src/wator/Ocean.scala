@@ -13,11 +13,11 @@ class Ocean(val taille_ : Int, val color_ : Color, sharks: Int, tunas: Int) exte
 	private def initGrid(tunas: Int, sharks: Int) {
 		val shLis = Random.shuffle(coordGrille)
 		for (t <- 0 until tunas) {
-			val tuna = new Tuna(shLis(t), this, Color.YELLOW, 2, 1)
+			val tuna = new Tuna(shLis(t), this, Color.ORANGE, 2, 1)
 			addAgent(tuna)
 		}
 		for (s <- 0 until sharks) {
-			val shark = new Shark(shLis(s + sharks), this, Color.RED, 1, 3, 1)
+			val shark = new Shark(shLis(s + sharks), this, Color.GRAY, 1, 3, 1)
 			addAgent(shark)
 		}
 	}
