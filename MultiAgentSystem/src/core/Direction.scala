@@ -7,23 +7,15 @@ class Direction(v_x: Int, v_y: Int) {
 	var dy = v_y
 
 	def setRebound(coord: Coordonnees, taille: Int) = {
-		//		(coord.x, coord.y) match {
-		//			case (0, 0) => { dx = -dx; dy = -dy }
-		//			case (0, 0) if (n == taille) => { dx = -dx; dy = -dy }
-		//			case (0, _) => dx = -dx
-		//			case (n, _) if (n == taille) => dx = -dx
-		//			case (_, 0) => dy = -dy
-		//			case (_, n) if (n == taille) => dy = -dy
-		//			case (_, _) => { dy = -dy; dx = -dx }
-		//		}
-		var change = false;
-		if (coord.x == 0 || coord.x == taille) {
+
+		var change = false
+		if (coord.x == 0 || coord.x == (taille - 1)) {
 			dx = -dx;
-			change = true;
+			change = true
 		}
-		if (coord.y == 0 || coord.y == taille) {
+		if (coord.y == 0 || coord.y == (taille - 1)) {
 			dy = -dy;
-			change = true;
+			change = true
 		}
 		if (!change) {
 			dx = -dx;
@@ -39,6 +31,11 @@ object Direction {
 
 	def random: Direction = {
 		val random = new util.Random
-		new Direction((random.nextInt(100) % 3) - 1, (random.nextInt(100) % 3) - 1)
+		val x = (random.nextInt(100) % 3) - 1
+		val y = (random.nextInt(100) % 3) - 1
+		if (x == 0 && y == 0) {
+			return Direction.random
+		}
+		new Direction(x, y)
 	}
 }

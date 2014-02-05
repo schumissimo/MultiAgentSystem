@@ -10,7 +10,7 @@ import core.Direction
 object Particles {
 
 	def main(args: Array[String]) {
-		val plateau: Environnement = new Plateau(10, Color.WHITE, 1)
+		val plateau: Environnement = new Plateau(10, Color.WHITE, 10)
 		val vue = new Vue(plateau, false)
 		val systeme = new Systeme(vue, plateau)
 		vue.visible = true
