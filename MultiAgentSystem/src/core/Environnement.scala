@@ -41,4 +41,13 @@ abstract class Environnement(taille_ : Int, color_ : Color) {
 	def getAgentFrom(coordonnees: Coordonnees): Agent = {
 		grille(coordonnees.x)(coordonnees.y)
 	}
+
+	def getOneFreeCoordonnees: Coordonnees = {
+		val randomList = util.Random.shuffle(coordGrille)
+		for (c <- randomList) {
+			if (getAgentFrom(c) == null)
+				return c
+		}
+		return null
+	}
 }

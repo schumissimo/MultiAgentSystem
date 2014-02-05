@@ -2,8 +2,8 @@ package core
 
 class Systeme(view: Vue, enviro: Environnement) {
 
-	var speed = 100
-	var rate = 50
+	var speed = 50
+	var rate = 10
 	val vue: Vue = view
 	val environnement = enviro
 

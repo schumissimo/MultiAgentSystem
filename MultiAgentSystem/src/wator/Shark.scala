@@ -34,7 +34,7 @@ class Shark(coord: Coordonnees, val environnement: Environnement, color: Color, 
 
 		evolution
 
-		val voisinsCoord: List[Coordonnees] = environnement.voisins(coordonnees).toList
+		val voisinsCoord = environnement.voisins(coordonnees)
 		voisinsCoord map (v => v.setValid(environnement.taille, true))
 		val voisins = for (
 			a <- voisinsCoord
