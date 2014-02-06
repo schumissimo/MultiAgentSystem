@@ -1,0 +1,5 @@
+package pacman
+
+class Runner {
+
+}

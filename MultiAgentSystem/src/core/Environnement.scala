@@ -7,6 +7,7 @@ abstract class Environnement(taille_ : Int, color_ : Color) {
 	val grille = Array.ofDim[Agent](taille, taille)
 	val color = color_
 	var agents: List[Agent] = Nil
+	lazy val dijsktra = Array.fill(taille,taille)(taille*taille)
 
 	lazy val coordGrille = {
 		for (
@@ -14,6 +15,7 @@ abstract class Environnement(taille_ : Int, color_ : Color) {
 			y <- 0 until taille
 		) yield new Coordonnees(x, y)
 	}
+	
 
 	def move(agent: Agent, coordonnees: Coordonnees) {
 		removeAgent(agent)
@@ -31,6 +33,10 @@ abstract class Environnement(taille_ : Int, color_ : Color) {
 		agents = agent :: agents
 	}
 
+	def setAgent(agent : Agent) {
+	  grille(agent.coordonnees.x)(agent.coordonnees.y) = agent
+	}
+	
 	def voisins(coordonnees: Coordonnees): Set[Coordonnees] =
 		for {
 			dx <- Set(-1, 0, 1)
@@ -49,5 +55,16 @@ abstract class Environnement(taille_ : Int, color_ : Color) {
 				return c
 		}
 		return null
+	}
+	
+	def getColor:Color = return color
+	
+	def isEmpty(coordonnees: Coordonnees) : Boolean = grille(coordonnees.x)(coordonnees.y) == null
+	
+	def dijsktraInit = {
+	  val t = taille * taille
+	  for(r <- 0 until taille)
+	    for( c <- 0 until taille)
+	      dijsktra(r)(c) = t
 	}
 }
