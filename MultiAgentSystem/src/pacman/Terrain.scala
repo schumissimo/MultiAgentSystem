@@ -9,12 +9,13 @@ extends Environnement(taille_, new Color(0,100,0)) {
 
   
   
-  val rdm = util.Random.shuffle(coordGrille)
- for(w <- 1 to 10){
-	 val wall = new Wall(rdm(w),this)
-	 setAgent(wall)
- }
+//  val rdm = util.Random.shuffle(coordGrille)
+// for(w <- 1 to 10){
+//	 val wall = new Wall(rdm(w),this)
+//	 setAgent(wall)
+// }
   addAgent(new Attractor(getOneFreeCoordonnees,this,true))
+  addAgent(new Runner(getOneFreeCoordonnees,this))
   
    
 }
