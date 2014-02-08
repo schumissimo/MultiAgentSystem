@@ -2,26 +2,29 @@ package core
 
 class Systeme(view: Vue, enviro: Environnement) {
 
-	var speed = 50
-	var rate = 100
+	var speed = 10
+	var rate = 10
 	val vue: Vue = view
 	val environnement = enviro
+	
+	vue.update
 
 	def run(tour: Int) {
-		vue.update
 		pause
 		evolution
-		if (tour != 1)
-			run(tour - 1)
-		else {
+		if (tour == 0){
 			vue.update
 			println("terminé")
+		}
+		else {
+			vue.update
+			run(tour - 1)
 		}
 	}
 
 	//infini
 	def run() {
-		run(0)
+		run(-1)
 	}
 
 	def evolution = {

@@ -61,6 +61,7 @@ class Vue(environnement: Environnement, showBorders: Boolean) extends Frame {
 				} else {
 					labels(row)(col).background = grilleEnv(row)(col).color
 				}
+				labels(row)(col).text = environnement.dijsktra(row)(col).toString
 			}
 		}
 	}

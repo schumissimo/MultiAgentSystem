@@ -17,7 +17,7 @@ class Ocean(val taille_ : Int, val color_ : Color, sharks: Int, tunas: Int) exte
 			addAgent(tuna)
 		}
 		for (s <- 0 until sharks) {
-			val shark = new Shark(shLis(s + sharks), this, Color.GRAY, 1, 3, 1)
+			val shark = new Shark(shLis(s + sharks), this, Color.DARK_GRAY, 1, 3, 1)
 			addAgent(shark)
 		}
 	}
