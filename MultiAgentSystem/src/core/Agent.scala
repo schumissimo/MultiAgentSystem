@@ -8,6 +8,7 @@ abstract class Agent(coordonnees_ : Coordonnees, val environnement: Environnemen
 	var coordonnees = coordonnees_
 	var played = false
 	var toRemove = false
+	val discorverMap = Array.fill(environnement.taille,environnement.taille)(true)
 
 	def action 
 
@@ -15,5 +16,13 @@ abstract class Agent(coordonnees_ : Coordonnees, val environnement: Environnemen
 
 	override def toString(): String = {
 		getClass() + " " + coordonnees.x + " " + coordonnees.y
+	}
+	
+	def discoverInit(boolean : Boolean){
+	  for(r <- 0 until environnement.taille){
+	    for(c <- 0 until environnement.taille){
+	      discorverMap(r)(c) = boolean
+	    }
+	  }
 	}
 }

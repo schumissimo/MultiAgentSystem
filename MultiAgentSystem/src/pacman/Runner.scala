@@ -10,7 +10,6 @@ class Runner(coord: Coordonnees, environnement: Environnement)
   extends Agent(coord, environnement, Color.YELLOW) with Movable {
 
   override def action {
-    println("runner")
     val voisins = environnement.voisinsMoore(coordonnees)
     voisins map (v => v.setValid(environnement.taille, false))
 
@@ -20,7 +19,6 @@ class Runner(coord: Coordonnees, environnement: Environnement)
     if (!nextCoord.isEmpty) {
       val next = util.Random.shuffle(nextCoord).head
       if (environnement.getAgentFrom(next).isInstanceOf[Attractor]) {
-    	  println("systeme stop")
         environnement.system.stopRun
       } else {
         moveTo(this, next, environnement)

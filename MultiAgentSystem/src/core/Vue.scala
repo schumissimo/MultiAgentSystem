@@ -53,7 +53,7 @@ class Vue(environnement: Environnement, showBorders: Boolean) extends Frame {
 	// mise a jour de la vue
 	def update {
 		val grilleEnv = environnement.grille
-
+		val discovered = environnement.agents.head
 		for (row <- 0 until envSize) {
 			for (col <- 0 until envSize) {
 				if (grilleEnv(row)(col) == null) {
@@ -61,7 +61,6 @@ class Vue(environnement: Environnement, showBorders: Boolean) extends Frame {
 				} else {
 					labels(row)(col).background = grilleEnv(row)(col).color
 				}
-				labels(row)(col).text = environnement.dijsktra(row)(col)+""
 			}
 		}
 	}

@@ -72,10 +72,10 @@ abstract class Environnement(taille_ : Int, color_ : Color) {
 
   def dijsktraInit = {
     val t = taille * taille
-    for (r <- 0 until taille){
-    	for (c <- 0 until taille){
-    		dijsktra(r)(c) = t
-    	}
+    for (r <- 0 until taille) {
+      for (c <- 0 until taille) {
+        dijsktra(r)(c) = t
+      }
     }
   }
 
@@ -88,12 +88,11 @@ abstract class Environnement(taille_ : Int, color_ : Color) {
   }
 
   def setLabyrinthe(nbDigger: Int) {
-   
-    val liste = util.Random.shuffle(coordGrille)
-    for (i <- 0 until nbDigger ) {
-      agents = (new Digger(liste(i), this)) :: agents
+    val randomList = util.Random.shuffle(coordGrille)
+    for (i <- 0 until (nbDigger * 2) / 3) {
+      agents = (new Digger(randomList(i), this)) :: agents
     }
-    for (t <- 1 to ( nbDigger*3/2 )) {
+    for (t <- 1 to (nbDigger * 8 / 4)) {
       agents map (d => d.action)
     }
   }

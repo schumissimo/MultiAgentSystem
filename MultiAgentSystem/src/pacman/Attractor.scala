@@ -14,9 +14,7 @@ import scala.collection.mutable.HashSet
 class Attractor(coord: Coordonnees, environnement: Environnement, val movable: Boolean)
   extends Agent(coord, environnement, Color.RED) with Movable {
 
-  var nb = 0
   override def action {
-    println("attractor")
     if (movable) {
       val voisins = environnement.voisinsMoore(coordonnees)
       voisins map (v => v.setValid(environnement.taille, false))
@@ -32,11 +30,8 @@ class Attractor(coord: Coordonnees, environnement: Environnement, val movable: B
     }
     environnement.dijsktraInit
     environnement.dijsktra(coordonnees.x)(coordonnees.y) = 0
-    //   calculDijsktra(coordonnees, 0)
     val set = new HashSet + coordonnees
     calculDijkstra(set, 0)
-    println(nb)
-    nb = 0
   }
 
   def calculDijkstra(voisinsMarque: Set[Coordonnees], n: Int) {
