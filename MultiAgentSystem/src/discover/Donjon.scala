@@ -1,0 +1,5 @@
+package discover
+
+class Donjon {
+
+}

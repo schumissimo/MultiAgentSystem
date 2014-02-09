@@ -8,8 +8,8 @@ import core.traits.Alive
 import core.traits.Movable
 import core.Direction
 
-class Particle(coord: Coordonnees, direction_ : Direction, val environnement: Environnement, color: Color)
-	extends Agent(coord, environnement, color) with Movable {
+class Particle(coord: Coordonnees, direction_ : Direction,  enviro :Environnement, color: Color)
+	extends Agent(coord, enviro, color) with Movable {
 
 	var direction = direction_
 

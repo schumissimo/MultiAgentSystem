@@ -7,10 +7,9 @@ import core.Coordonnees
 import core.Environnement
 import core.traits.Movable
 import core.traits.Satisfiable
-import core.traits.Satisfiable
 
-class Population(coord: Coordonnees, val environnement: Environnement, color: Color, taux: Int)
-	extends Agent(coord, environnement, color) with Movable with Satisfiable {
+class Population(coord: Coordonnees, enviro : Environnement, color: Color, taux: Int)
+	extends Agent(coord, enviro, color) with Movable with Satisfiable {
 	override val satisfyRate = taux
 
 	override def action {
@@ -19,7 +18,7 @@ class Population(coord: Coordonnees, val environnement: Environnement, color: Co
 		}
 		played = true
 
-		val mesVoisins = environnement.voisins(coordonnees).toList
+		val mesVoisins = environnement.voisinsMoore(coordonnees).toList
 		mesVoisins map (v => v.setValid(environnement.taille, true))
 		val mesVoisinsAgent = for (v <- mesVoisins) yield environnement.getAgentFrom(v)
 

@@ -1,21 +1,23 @@
 package pacman
 
 import java.awt.Color
-
 import core.Environnement
+import org.omg.CORBA.Environment
 
-class Terrain(val taille_ : Int,nbAttractor: Int,nbRunner:Int) 
-extends Environnement(taille_, new Color(0,100,0)) {
+class Terrain(taille_ : Int, nbAttractor: Int, nbRunner: Int)
+  extends Environnement(taille_, new Color(0, 100, 0)) {
 
-  
-  
-//  val rdm = util.Random.shuffle(coordGrille)
-// for(w <- 1 to 10){
-//	 val wall = new Wall(rdm(w),this)
-//	 setAgent(wall)
-// }
-  addAgent(new Attractor(getOneFreeCoordonnees,this,true))
-  addAgent(new Runner(getOneFreeCoordonnees,this))
-  
-   
+  setAllWall
+  setLabyrinthe(taille)
+  removeaAgentsLabyrinthe
+  initAgent(nbAttractor, nbRunner)
+
+  def initAgent(attractor: Int, runner: Int) {
+    for (a <- 1 to nbAttractor) {
+      addAgent(new Attractor(getOneFreeCoordonnees, this, true))
+    }
+    for (r <- 1 to nbRunner) {
+      addAgent(new Runner(getOneFreeCoordonnees, this))
+    }
+  }
 }

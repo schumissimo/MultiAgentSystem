@@ -3,14 +3,13 @@ package core
 import scala.actors.Actor
 import java.awt.Color
 
-class Agent(coordonnees_ : Coordonnees, environnement: Environnement, color_ : Color) {
+abstract class Agent(coordonnees_ : Coordonnees, val environnement: Environnement, val color : Color) {
 
 	var coordonnees = coordonnees_
-	val color = color_
 	var played = false
 	var toRemove = false
 
-	def action = {}
+	def action 
 
 	def evolution = {}
 

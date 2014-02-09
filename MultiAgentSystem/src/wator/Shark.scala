@@ -9,8 +9,8 @@ import core.traits.Predator
 import core.traits.Movable
 import core.traits.Reproductable
 
-class Shark(coord: Coordonnees, val environnement: Environnement, color: Color, eat_ : Int, gestation_ : Int, age_ : Int)
-	extends Agent(coord, environnement, color) with Alive with Predator with Movable with Reproductable {
+class Shark(coord: Coordonnees,  enviro: Environnement, color: Color, eat_ : Int, gestation_ : Int, age_ : Int)
+	extends Agent(coord, enviro, color) with Alive with Predator with Movable with Reproductable {
 
 	override val TIME_TO_EAT = eat_
 	timeToEat = TIME_TO_EAT
@@ -35,7 +35,7 @@ class Shark(coord: Coordonnees, val environnement: Environnement, color: Color, 
 
 		evolution
 
-		val voisinsCoord = environnement.voisins(coordonnees)
+		val voisinsCoord = environnement.voisinsMoore(coordonnees)
 		voisinsCoord map (v => v.setValid(environnement.taille, true))
 		val voisins = for (
 			a <- voisinsCoord

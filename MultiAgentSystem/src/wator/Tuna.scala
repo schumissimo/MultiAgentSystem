@@ -8,8 +8,8 @@ import java.awt.Color
 import core.traits.Movable
 import core.traits.Reproductable
 
-class Tuna(coord: Coordonnees, val environnement: Environnement, color: Color, gestation_ : Int, age_ : Int)
-	extends Agent(coord, environnement, color) with Alive with Movable with Reproductable{
+class Tuna(coord: Coordonnees,  enviro: Environnement, color: Color, gestation_ : Int, age_ : Int)
+	extends Agent(coord, enviro, color) with Alive with Movable with Reproductable{
 
 	override val TIME_TO_REPRODUCE = gestation_
 	reproduction = TIME_TO_REPRODUCE
@@ -27,7 +27,7 @@ class Tuna(coord: Coordonnees, val environnement: Environnement, color: Color, g
 
 		evolution
 
-		val voisinsCoord = environnement.voisins(coordonnees)
+		val voisinsCoord = environnement.voisinsMoore(coordonnees)
 		voisinsCoord map (v => v.setValid(environnement.taille, true))
 
 		val nextMove = for (v <- voisinsCoord; if (environnement.getAgentFrom(v) == null)) yield v

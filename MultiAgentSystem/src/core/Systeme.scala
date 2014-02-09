@@ -2,37 +2,44 @@ package core
 
 class Systeme(view: Vue, enviro: Environnement) {
 
-	var speed = 10
-	var rate = 10
-	val vue: Vue = view
-	val environnement = enviro
-	
-	vue.update
+  var speed = 50
+  var rate =  300
+  val vue: Vue = view
+  val environnement = enviro
+  var stop = false
 
-	def run(tour: Int) {
-		pause
-		evolution
-		if (tour == 0){
-			vue.update
-			println("terminé")
-		}
-		else {
-			vue.update
-			run(tour - 1)
-		}
-	}
+  vue.update
 
-	//infini
-	def run() {
-		run(-1)
-	}
+  def run(tour: Int) {
+    pause
+    evolution
+    if (tour == 1 || stop) {
+      vue.update
+      println("terminé")
+    } else {
+      vue.update
+      run(tour - 1)
+    }
+  }
+  
+  def stopRun {
+    stop = true
+    environnement.agents map (a => a.played = true)
+    println("stop")
+    
+ }
 
-	def evolution = {
-		util.Random.shuffle(environnement.agents) map (a => a action)
-		environnement.agents map (a => a.played = false)
-	}
+  //infini
+  def run() {
+    run(-1)
+  }
 
-	def pause {
-		Thread.sleep(speed * rate / 100)
-	}
+  def evolution = {
+    util.Random.shuffle(environnement.agents) map (a => a action)
+    environnement.agents map (a => a.played = false)
+  }
+
+  def pause {
+    Thread.sleep(speed * rate / 100)
+  }
 }
