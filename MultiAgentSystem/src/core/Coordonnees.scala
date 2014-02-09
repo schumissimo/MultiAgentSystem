@@ -1,6 +1,6 @@
 package core
 
-class Coordonnees(x_ : Int, y_ : Int) {
+class Coordonnees(x_ : Int, y_ : Int) extends Equals {
   var x = x_
   var y = y_
 
@@ -37,6 +37,16 @@ class Coordonnees(x_ : Int, y_ : Int) {
   override def equals(obj: Any): Boolean = {
     val coo = obj.asInstanceOf[Coordonnees]
     return (coo.x == x && coo.y == y)
+  }
+
+  override def hashCode() = {
+    val prime = 41
+    prime + x + y
+  }
+
+  def canEqual(other: Any) = {
+     val coo = other.asInstanceOf[Coordonnees]
+    (coo.x == x && coo.y == y)
   }
 
 }

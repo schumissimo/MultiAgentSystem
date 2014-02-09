@@ -44,7 +44,7 @@ abstract class Environnement(taille_ : Int, color_ : Color) {
     for {
       dx <- Set(-1, 0, 1)
       dy <- Set(-1, 0, 1)
-      if (dy != 0 || dx != 0)
+      if (!(dy == 0 && dx == 0))
     } yield new Coordonnees(coordonnees.x + dx, coordonnees.y + dy)
 
   def voisinsVonNeumann(coordonnees: Coordonnees): Set[Coordonnees] = for {
