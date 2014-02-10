@@ -13,7 +13,7 @@ object Explorer {
     val systeme = new Systeme(vue, chateau)
     vue.visible = true
     chateau.system = systeme
-    systeme.run()
+    systeme.run(0)
     
     }
 }

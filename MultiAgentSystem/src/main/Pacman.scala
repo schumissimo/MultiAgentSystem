@@ -14,6 +14,6 @@ def main(args: Array[String]) {
 		val systeme = new Systeme(vue, terrain)
 		vue.visible = true
 		terrain.system = systeme
-		systeme.run()
+		systeme.run(1)
 	}
 }
