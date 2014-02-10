@@ -1,8 +1,6 @@
 package core
 
-class Coordonnees(x_ : Int, y_ : Int) extends Equals {
-  var x = x_
-  var y = y_
+class Coordonnees(var x : Int, var y : Int) extends Equals {
 
   override def toString(): String = {
     x + " " + y

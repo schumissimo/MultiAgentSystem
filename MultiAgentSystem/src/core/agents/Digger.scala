@@ -7,8 +7,8 @@ import core.Coordonnees
 import core.Environnement
 import core.traits.Digging
 
-class Digger (coord_ : Coordonnees, enviro: Environnement)
-  extends Agent(coord_ , enviro, Color.YELLOW) with Digging {
+class Digger (coord : Coordonnees, env: Environnement)
+  extends Agent(coord , env, Color.YELLOW) with Digging {
   
   override def action  = {
     val voisins = environnement.voisinsVonNeumann(coordonnees)

@@ -3,7 +3,7 @@ package schelling
 import core.Environnement
 import java.awt.Color
 
-class Territoire(val taille_ : Int, val color_ : Color, tauxRemplissage: Int, tauxSatisfaction: Int) extends Environnement(taille_, color_) {
+class Territoire(taille_ : Int, color_ : Color, tauxRemplissage: Int, tauxSatisfaction: Int) extends Environnement(taille_, color_) {
 
 	setPopulation(tauxRemplissage, tauxSatisfaction)
 

@@ -1,10 +1,8 @@
 package core
 
-class Direction(v_x: Int, v_y: Int) {
-	require(v_x <= 1 && v_x >= -1)
-	var dx = v_x
-	require(v_y <= 1 && v_y >= -1)
-	var dy = v_y
+class Direction(var dx: Int, var dy: Int) {
+	require(dx <= 1 && dx >= -1)
+	require(dy <= 1 && dy >= -1)
 
 	def setRebound(coord: Coordonnees, taille: Int) = {
 

@@ -6,7 +6,7 @@ import core.Environnement
 import core.Direction
 import core.Coordonnees
 
-class Plateau(val taille_ : Int, val color_ : Color, particles: Int) extends Environnement(taille_, color_) {
+class Plateau(taille_ : Int, color_ : Color, particles: Int) extends Environnement(taille_, color_) {
 
 	initGrid(particles)
 

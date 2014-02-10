@@ -4,10 +4,10 @@ import java.awt.Color
 import core.agents.Digger
 import core.agents.Wall
 
-abstract class Environnement(taille_ : Int, color_ : Color) {
-  val taille = taille_
+abstract class Environnement(val taille : Int, val color : Color) {
+  
+  
   val grille = Array.ofDim[Agent](taille, taille)
-  val color = color_
   var agents: List[Agent] = Nil
   lazy val dijsktra = Array.fill(taille, taille)(taille * taille)
 

@@ -6,7 +6,7 @@ import core.Coordonnees
 import core.Coordonnees
 import scala.util.Random
 
-class Ocean(val taille_ : Int, val color_ : Color, sharks: Int, tunas: Int) extends Environnement(taille_, color_) {
+class Ocean(taille_ : Int,  color_ : Color, sharks: Int, tunas: Int) extends Environnement(taille_, color_) {
 
 	initGrid(tunas, sharks)
 

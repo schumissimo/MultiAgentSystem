@@ -1,7 +1,6 @@
 package core
 
 import java.awt.Color
-
 import scala.swing.BorderPanel
 import scala.swing.Dimension
 import scala.swing.Frame
@@ -9,8 +8,9 @@ import scala.swing.GridPanel
 import scala.swing.Label
 import scala.swing.ScrollPane
 import scala.swing.Swing
+import pacman.Attractor
 
-class Vue(environnement: Environnement, showBorders: Boolean) extends Frame {
+abstract class Vue(val environnement: Environnement, val showBorders: Boolean) extends Frame {
 	val envSize = environnement.taille
 	val viewSize = 500
 	val cellSize = 10
@@ -47,13 +47,9 @@ class Vue(environnement: Environnement, showBorders: Boolean) extends Frame {
 	peer.setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE)
 	pack
 
-	//constructor
-	def this(environnement: Environnement) = this(environnement, true)
-
 	// mise a jour de la vue
-	def update {
+	def update  {
 		val grilleEnv = environnement.grille
-		val discovered = environnement.agents.head
 		for (row <- 0 until envSize) {
 			for (col <- 0 until envSize) {
 				if (grilleEnv(row)(col) == null) {
@@ -61,6 +57,7 @@ class Vue(environnement: Environnement, showBorders: Boolean) extends Frame {
 				} else {
 					labels(row)(col).background = grilleEnv(row)(col).color
 				}
+				labels(row)(col).text = environnement.dijsktra(row)(col)+""
 			}
 		}
 	}

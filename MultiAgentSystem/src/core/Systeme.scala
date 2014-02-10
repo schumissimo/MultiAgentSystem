@@ -1,11 +1,9 @@
 package core
 
-class Systeme(view: Vue, enviro: Environnement) {
+class Systeme(val vue: Vue, val environnement: Environnement) {
 
   var speed = 100
-  var rate =  300
-  val vue: Vue = view
-  val environnement = enviro
+  var rate =  30
   var stop = false
 
   vue.update
