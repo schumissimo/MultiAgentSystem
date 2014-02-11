@@ -20,7 +20,7 @@ class Runner(coord: Coordonnees, environnement: Environnement)
       val next = util.Random.shuffle(nextCoord).head
       val agentNext = environnement.getAgentFrom(next)
       if (agentNext.isInstanceOf[Attractor]) {
-        println(this.getClass()+"("+coordonnees+") a attrapé "+agentNext.getClass()+" en ("+agentNext.coordonnees+")")
+        println(this.getClass()+"("+coordonnees+") a attrapÃ© "+agentNext.getClass()+" en ("+agentNext.coordonnees+")")
         environnement.system.stopRun
       } else {
         moveTo(this, next, environnement)

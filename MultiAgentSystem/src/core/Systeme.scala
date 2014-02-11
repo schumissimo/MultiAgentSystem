@@ -13,7 +13,7 @@ class Systeme(val vue: Vue, val environnement: Environnement) {
     evolution
     if (tour == 1 || stop) {
       vue.update
-      println("terminé")
+      println("terminÃ©")
     } else {
       vue.update
       run(tour - 1)
