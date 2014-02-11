@@ -34,7 +34,6 @@ abstract class Agent(var coordonnees : Coordonnees, val environnement: Environne
 	}
 
 	def voisinsWithVonNeumann(coordonnees: Coordonnees,isTorique:Boolean) = {
-		//      val voisins = environnement.voisinsMoore(coordonnees)
 		val voisins = environnement.voisinsVonNeumann(coordonnees)
 		voisins map (v => v.setValid(environnement.taille, isTorique))
 		voisins
@@ -72,9 +71,9 @@ abstract class Agent(var coordonnees : Coordonnees, val environnement: Environne
     res
   }
 
-  private def getVoisinMarquable(coord: core.Coordonnees, n: Int): scala.collection.immutable.Set[core.Coordonnees] = {
+  def getVoisinMarquable(coord: core.Coordonnees, n: Int): scala.collection.immutable.Set[core.Coordonnees] = {
 		 val voisins = voisinsWithVonNeumann(coord, false)
-    for (v <- voisins; if (environnement.dijsktra(v.x)(v.y) > n && environnement.isEmpty(v))) yield v
+    for (v <- voisins; if (environnement.dijsktra(v.x)(v.y) > n  && environnement.isEmpty(v))) yield v
   }
 
 }

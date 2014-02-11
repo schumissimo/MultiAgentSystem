@@ -14,10 +14,12 @@ class Discoverer(coordonnees_ : Coordonnees, environnement_ : Environnement)
   var coordonneesPossible = environnement.coordGrille
   discoverInit(false)
   var dest: Coordonnees = null
-  
+
   override def action {
-	discoverVoisins
-    if (dest != null && coordonnees != dest) {
+    discoverVoisins
+    if (dest != null && coordonnees != dest && !(environnement.getAgentFrom(dest).isInstanceOf[Wall] && discorverMap(dest.x)(dest.y))) {
+    	println()
+      calculDijkstra(dest)
       nextChoice
     } else {
       calculDijkstra(coordonnees)
@@ -53,8 +55,8 @@ class Discoverer(coordonnees_ : Coordonnees, environnement_ : Environnement)
   private def getClosestNotDiscoverYet = {
     val notDiscoverYet = for (
       v <- coordonneesPossible;
-      if (!discorverMap(v.x)(v.y));
-      if (environnement.dijsktra(v.x)(v.y) < environnement.taille * environnement.taille)
+      if (!discorverMap(v.x)(v.y))
+    //if (environnement.dijsktra(v.x)(v.y) < environnement.taille * environnement.taille)
     ) yield v
 
     if (notDiscoverYet.isEmpty) {
@@ -65,6 +67,13 @@ class Discoverer(coordonnees_ : Coordonnees, environnement_ : Environnement)
       val available = for (ny <- notDiscoverYet; if (environnement.dijsktra(ny.x)(ny.y) == minValue)) yield ny
       available.toSet[Coordonnees]
     }
+  }
+
+  override def getVoisinMarquable(coord: core.Coordonnees, n: Int): scala.collection.immutable.Set[core.Coordonnees] = {
+    val voisins = voisinsWithVonNeumann(coord, false)
+    for (
+      v <- voisins if (environnement.dijsktra(v.x)(v.y) > n) if (!(environnement.getAgentFrom(v).isInstanceOf[Wall] && discorverMap(v.x)(v.y)))
+    ) yield v
   }
 
 }

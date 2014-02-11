@@ -24,6 +24,7 @@ class ExplorerVue(env: Environnement, show: Boolean) extends Vue(env, show) {
        
           labels(row)(col).background = Color.BLACK
         }
+        labels(row)(col).text = environnement.dijsktra(row)(col) +""
       }
     }
   }
